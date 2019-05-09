@@ -24,9 +24,9 @@ public class TennisSet implements ItennisService {
 		}
 		if (tieBreak()) {
 
-			if (tieRule()) {
+			if (tieBreakEndRule()) {
 				result = highestPlayerScore().concat(
-						" is the winner of the Match");
+						" is the winner of the Set and the Match");
 
 			}
 		}
@@ -39,41 +39,26 @@ public class TennisSet implements ItennisService {
 			return true;
 		}
 
-		// if (player1.getScoreSet().getScore() != 5 &&
-		// player2.getScoreSet().getScore() != 5)
-		// {
-		// return Math.abs(player1.getScoreSet().getScore() -
-		// player2.getScoreSet().getScore())
-		// >= 1;
-		// }
-
-		if ((player1.getScoreSet().getScore() >= 6 || player2.getScoreSet()
-				.getScore() >= 6)
+		if ((player1.getScoreSet().getScore() == 6 || player2.getScoreSet()
+				.getScore() == 6)
 				&& (player1.getScoreSet().getScore() <= 4 || player2
 						.getScoreSet().getScore() <= 4)) {
 			return true;
 		}
-		// if (tieBreak()) {
-		//
-		// if (tieRule()) {
-		// return true;
-		//
-		// }
-		// }
 		return false;
 	}
 
-	private boolean tieRule() {
+	private boolean tieBreakEndRule() {
 		int tieBreakScore = player1.getScoreSet().getTieBreak()
 				- player2.getScoreSet().getTieBreak();
+
 		if ((player1.getScoreSet().getTieBreak() >= 7 || player2.getScoreSet()
 				.getTieBreak() >= 7) && Math.abs(tieBreakScore) >= 2) {
 			if (tieBreakScore >= 0) {
-				player1.getScoreSet().setScore(
-						player2.getScoreSet().getScore() + 1);
+				player1.getScoreSet().addScore();
 			} else if (tieBreakScore < 0) {
-				player2.getScoreSet().setScore(
-						player1.getScoreSet().getScore() + 1);
+				player2.getScoreSet().addScore();
+
 			}
 			return true;
 		}

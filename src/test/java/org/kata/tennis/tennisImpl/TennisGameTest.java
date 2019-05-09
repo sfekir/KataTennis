@@ -5,7 +5,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.kata.tennis.model.Player;
-import org.kata.tennis.tennisImpl.TennisGame;
 
 public class TennisGameTest {
 	private TennisGame tennisGame;
@@ -32,7 +31,7 @@ public class TennisGameTest {
 	}
 
 	@Test
-	public void should_returnPlayer2Win_whenScorePlayer1_4_player2_0() {
+	public void should_returnPlayer2Win_whenScorePlayer1_2_player2_4() {
 		ScoreGamePlayers(2, 4);
 		String score = tennisGame.getGameState();
 		Assert.assertEquals("Gabriel is the winner of the game", score);
@@ -62,7 +61,7 @@ public class TennisGameTest {
 
 	}
 
-	public void should_returnPlayerT2Wins_AfterAdvantage() {
+	public void should_returnPlayer2Wins_AfterAdvantage() {
 		ScoreGamePlayers(5, 7);
 		String score = tennisGame.getGameState();
 		Assert.assertEquals("Jack is the winner of the game", score);

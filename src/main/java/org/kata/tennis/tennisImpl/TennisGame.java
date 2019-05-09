@@ -31,8 +31,9 @@ public class TennisGame implements ItennisService {
 		return result;
 	}
 
-	public boolean isDeuce() {
-		return player1.getScoreGame().getScore() >= 3
+	private boolean isDeuce() {
+		return (player1.getScoreGame().getScore() >= 3 || player2
+				.getScoreGame().getScore() >= 3)
 				&& player2.getScoreGame().getScore() == player1.getScoreGame()
 						.getScore();
 	}
@@ -58,7 +59,7 @@ public class TennisGame implements ItennisService {
 		return false;
 	}
 
-	public boolean hasAdvantage() {
+	private boolean hasAdvantage() {
 		if (player2.getScoreGame().getScore() >= 4
 				&& player2.getScoreGame().getScore() == player1.getScoreGame()
 						.getScore() + 1)

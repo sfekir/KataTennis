@@ -14,7 +14,7 @@ public class TennisSetTest {
 
 	@Before
 	public void setUp() throws Exception {
-		player1 = new Player("Jack");
+		player1 = new Player("JACK");
 		player2 = new Player("MANUEL");
 		tennisSet = new TennisSet(player1, player2);
 	}
@@ -27,7 +27,7 @@ public class TennisSetTest {
 	public void should_returnPlayer1_IsWinner() {
 		addScoreSet(6, 4);
 
-		Assert.assertEquals("Jack is the winner of the set",
+		Assert.assertEquals("JACK is the winner of the set",
 				tennisSet.getWinner());
 	}
 
@@ -50,16 +50,20 @@ public class TennisSetTest {
 	public void should_returnPlayer1_IsWinnertieRule() {
 		addScoreSet(6, 6);
 		addTieBreakScore(7, 2);
-		Assert.assertEquals("Jack is the winner of the Match",
+		Assert.assertEquals("JACK is the winner of the Set and the Match",
 				tennisSet.getWinner());
+		Assert.assertEquals(7, player1.getScoreSet().getScore());
+
 	}
 
 	@Test
 	public void should_returnPlayer2_IsWinnertieRule() {
 		addScoreSet(6, 6);
 		addTieBreakScore(5, 7);
-		Assert.assertEquals("MANUEL is the winner of the Match",
+		Assert.assertEquals("MANUEL is the winner of the Set and the Match",
 				tennisSet.getWinner());
+		Assert.assertEquals(7, player2.getScoreSet().getScore());
+
 	}
 
 	private void addScoreSet(int scoreplayer1, int scoreplayer2) {
@@ -74,7 +78,6 @@ public class TennisSetTest {
 	private void addTieBreakScore(int tieBreakScore1, int tieBreakScore2) {
 		for (int i = 0; i < tieBreakScore1; i++) {
 			player1.getScoreSet().addTieBreakScore();
-			;
 		}
 		for (int i = 0; i < tieBreakScore2; i++) {
 			player2.getScoreSet().addTieBreakScore();
