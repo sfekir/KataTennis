@@ -9,6 +9,9 @@ import org.kata.tennis.model.Player;
  */
 public class TennisGame implements ItennisService {
 
+	private static final String IS_THE_WINNER_OF_THE_GAME = " is the winner of the game";
+	private static final String BOTH_PLAYERS_ARE_DEUCE = "Both players are Deuce";
+	private static final String HAS_THE_ADVANTAGE = " has the advantage";
 	private Player player1;
 	private Player player2;
 
@@ -22,11 +25,11 @@ public class TennisGame implements ItennisService {
 		result = getWinner();
 
 		if (hasAdvantage()) {
-			result = highestPlayerScore().concat(" has the advantage");
+			result = highestPlayerScore().concat(HAS_THE_ADVANTAGE);
 		}
 
 		if (isDeuce()) {
-			result = result.concat("Both players are Deuce");
+			result = result.concat(BOTH_PLAYERS_ARE_DEUCE);
 		}
 		return result;
 	}
@@ -72,7 +75,7 @@ public class TennisGame implements ItennisService {
 	public String getWinner() {
 		String winner = "";
 		if (hasWinner()) {
-			winner = highestPlayerScore().concat(" is the winner of the game");
+			winner = highestPlayerScore().concat(IS_THE_WINNER_OF_THE_GAME);
 		}
 		return winner;
 	}

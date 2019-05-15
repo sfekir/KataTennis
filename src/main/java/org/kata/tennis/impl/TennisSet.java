@@ -9,6 +9,8 @@ import org.kata.tennis.model.Player;
  */
 public class TennisSet implements ItennisService {
 
+	private static final String IS_THE_WINNER_OF_THE_SET_AND_THE_MATCH = " is the winner of the Set and the Match";
+	private static final String IS_THE_WINNER_OF_THE_SET = " is the winner of the set";
 	private Player player1;
 	private Player player2;
 
@@ -20,11 +22,11 @@ public class TennisSet implements ItennisService {
 	public String getWinner() {
 		String result = "";
 		if (hasWinner()) {
-			result = highestPlayerScore().concat(" is the winner of the set");
+			result = highestPlayerScore().concat(IS_THE_WINNER_OF_THE_SET);
 		}
 		if (tieBreak() && tieBreakEndRule()) {
 			result = highestPlayerScore().concat(
-					" is the winner of the Set and the Match");
+					IS_THE_WINNER_OF_THE_SET_AND_THE_MATCH);
 		}
 		return result;
 	}
