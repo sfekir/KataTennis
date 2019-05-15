@@ -1,4 +1,4 @@
-package org.kata.tennis.tennisInterface;
+package org.kata.tennis;
 
 /*
  * Created by Samia FEKIR 

@@ -1,7 +1,7 @@
-package org.kata.tennis.tennisImpl;
+package org.kata.tennis.impl;
 
+import org.kata.tennis.ItennisService;
 import org.kata.tennis.model.Player;
-import org.kata.tennis.tennisInterface.ItennisService;
 
 /*
  * Created by Samia FEKIR 
@@ -48,29 +48,24 @@ public class TennisGame implements ItennisService {
 	}
 
 	public boolean hasWinner() {
-		if (player2.getScoreGame().getScore() >= 4
-				&& player2.getScoreGame().getScore() >= player1.getScoreGame()
-						.getScore() + 2)
-			return true;
-		if (player1.getScoreGame().getScore() >= 4
-				&& player1.getScoreGame().getScore() >= player2.getScoreGame()
-						.getScore() + 2)
-			return true;
-		return false;
+		return isWinner(player1, player2) || isWinner(player2, player1);
+	}
+
+	public boolean isWinner(final Player player, final Player player2) {
+		return player.getScoreGame().getScore() >= 4
+				&& player.getScoreGame().getScore() >= player2.getScoreGame()
+						.getScore() + 2;
 	}
 
 	private boolean hasAdvantage() {
-		if (player2.getScoreGame().getScore() >= 4
-				&& player2.getScoreGame().getScore() == player1.getScoreGame()
-						.getScore() + 1)
-			return true;
-		if (player1.getScoreGame().getScore() >= 4
-				&& player1.getScoreGame().getScore() == player2.getScoreGame()
-						.getScore() + 1)
-			return true;
+		return isAdvantage(player1, player2) || isAdvantage(player2, player1);
 
-		return false;
+	}
 
+	public boolean isAdvantage(final Player player, final Player player2) {
+		return player2.getScoreGame().getScore() >= 4
+				&& player2.getScoreGame().getScore() == player.getScoreGame()
+						.getScore() + 1;
 	}
 
 	@Override

@@ -1,6 +1,5 @@
-package org.kata.tennis.tennisImpl;
+package org.kata.tennis.impl;
 
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,18 +12,14 @@ public class TennisSetTest {
 	private Player player2;
 
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
 		player1 = new Player("JACK");
 		player2 = new Player("MANUEL");
 		tennisSet = new TennisSet(player1, player2);
 	}
 
-	@After
-	public void tearDown() throws Exception {
-	}
-
 	@Test
-	public void should_returnPlayer1_IsWinner() {
+	public void shouldReturnPlayer1IsWinner() {
 		addScoreSet(6, 4);
 
 		Assert.assertEquals("JACK is the winner of the set",
@@ -32,7 +27,7 @@ public class TennisSetTest {
 	}
 
 	@Test
-	public void should_returnPlayer2_IsWinner() {
+	public void shouldReturnPlayer2IsWinner() {
 		addScoreSet(4, 7);
 
 		Assert.assertEquals("MANUEL is the winner of the set",
@@ -40,14 +35,14 @@ public class TennisSetTest {
 	}
 
 	@Test
-	public void should_returNoWinner_whenPlayeScore1_6_PlayerScore2_5() {
+	public void shouldReturNoWinnerWhenPlayeScore1Is6AndPlayerScore2Is5() {
 		addScoreSet(6, 5);
 
 		Assert.assertTrue("".equals(tennisSet.getWinner()));
 	}
 
 	@Test
-	public void should_returnPlayer1_IsWinnertieRule() {
+	public void shouldReturnPlayer1IsWinnertieRule() {
 		addScoreSet(6, 6);
 		addTieBreakScore(7, 2);
 		Assert.assertEquals("JACK is the winner of the Set and the Match",
@@ -57,7 +52,7 @@ public class TennisSetTest {
 	}
 
 	@Test
-	public void should_returnPlayer2_IsWinnertieRule() {
+	public void shouldReturnPlayer2IsWinnertieRule() {
 		addScoreSet(6, 6);
 		addTieBreakScore(5, 7);
 		Assert.assertEquals("MANUEL is the winner of the Set and the Match",

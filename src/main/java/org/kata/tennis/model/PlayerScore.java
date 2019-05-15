@@ -4,10 +4,10 @@ package org.kata.tennis.model;
  * Created by Samia FEKIR 
  * Creation Date : 08/05/2019
  */
-abstract class Score {
+abstract class PlayerScore {
 	private int score;
 
-	public Score() {
+	public PlayerScore() {
 		initScore();
 	}
 

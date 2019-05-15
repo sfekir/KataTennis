@@ -1,7 +1,7 @@
-package org.kata.tennis.tennisImpl;
+package org.kata.tennis.impl;
 
+import org.kata.tennis.ItennisService;
 import org.kata.tennis.model.Player;
-import org.kata.tennis.tennisInterface.ItennisService;
 
 /*
  * Created by Samia FEKIR 
@@ -22,13 +22,9 @@ public class TennisSet implements ItennisService {
 		if (hasWinner()) {
 			result = highestPlayerScore().concat(" is the winner of the set");
 		}
-		if (tieBreak()) {
-
-			if (tieBreakEndRule()) {
-				result = highestPlayerScore().concat(
-						" is the winner of the Set and the Match");
-
-			}
+		if (tieBreak() && tieBreakEndRule()) {
+			result = highestPlayerScore().concat(
+					" is the winner of the Set and the Match");
 		}
 		return result;
 	}
@@ -38,14 +34,10 @@ public class TennisSet implements ItennisService {
 				|| player2.getScoreSet().getScore() == 7) {
 			return true;
 		}
-
-		if ((player1.getScoreSet().getScore() == 6 || player2.getScoreSet()
+		return (player1.getScoreSet().getScore() == 6 || player2.getScoreSet()
 				.getScore() == 6)
 				&& (player1.getScoreSet().getScore() <= 4 || player2
-						.getScoreSet().getScore() <= 4)) {
-			return true;
-		}
-		return false;
+						.getScoreSet().getScore() <= 4);
 	}
 
 	private boolean tieBreakEndRule() {

@@ -4,7 +4,7 @@ package org.kata.tennis.model;
  * Created by Samia FEKIR 
  * Creation Date : 08/05/2019
  */
-public class ScoreSet extends Score {
+public class ScoreSet extends PlayerScore {
 	private int tieBreak;
 
 	public int getTieBreak() {
